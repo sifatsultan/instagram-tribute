@@ -38,7 +38,7 @@ function App() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [user, setUser] = useState("")
-  const [posts, setPosts] = useState(postsData)
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -201,12 +201,12 @@ function App() {
       <div className="timeline">
         {user ? <ImageUpload user={user} /> : ''}
 
-        {posts.map((post) => (
+        {posts.map((postItem) => (
           <Post
-            key={post.id}
-            username={post.username}
-            caption={post.caption}
-            imageUrl={post.imageUrl}
+            key={postItem.id}
+            username={postItem.post.username}
+            caption={postItem.post.caption}
+            imageUrl={postItem.post.imageUrl}
           />
         ))}
       </div>
